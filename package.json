@@ -12,6 +12,7 @@
     "cap:android": "npx cap add android"
   },
   "dependencies": {
+    "@capacitor/app": "^5.0.8",
     "@capacitor/android": "^5.7.8",
     "@capacitor/clipboard": "^5.0.7",
     "@capacitor/core": "^5.7.8",

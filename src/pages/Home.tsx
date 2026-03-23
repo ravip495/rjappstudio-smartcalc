@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   IonButton,
+  IonButtons,
   IonCard,
   IonCardContent,
   IonCol,
@@ -18,6 +19,7 @@ import {
   IonToolbar
 } from '@ionic/react';
 import {
+  arrowBackOutline,
   basketOutline,
   calendarOutline,
   calculatorOutline,
@@ -41,8 +43,11 @@ import {
 } from 'ionicons/icons';
 import { useNavigate } from 'react-router-dom';
 import { Preferences } from '@capacitor/preferences';
+import { Capacitor } from '@capacitor/core';
+import { App as CapacitorApp } from '@capacitor/app';
 
 import styles from './Home.module.scss';
+import ExitDialog from '../components/ExitDialog';
 
 interface HomeProps {
   isDarkMode: boolean;
@@ -192,6 +197,7 @@ const Home = ({ isDarkMode, onToggleDarkMode }: HomeProps) => {
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [favorites, setFavorites] = useState<string[]>([]);
+  const [showExitDialog, setShowExitDialog] = useState(false);
 
   useEffect(() => {
     const loadFavorites = async () => {
@@ -242,11 +248,72 @@ const Home = ({ isDarkMode, onToggleDarkMode }: HomeProps) => {
     []
   );
 
+  const openExitDialog = () => {
+    setShowExitDialog(true);
+  };
+
+  useEffect(() => {
+    if (!Capacitor.isNativePlatform()) {
+      return;
+    }
+
+    let removeListener: (() => Promise<void>) | undefined;
+
+    void CapacitorApp.addListener('backButton', ({ canGoBack }) => {
+      if (!canGoBack) {
+        openExitDialog();
+      }
+    }).then((listener) => {
+      removeListener = () => listener.remove();
+    });
+
+    return () => {
+      if (removeListener) {
+        void removeListener();
+      }
+    };
+  }, []);
+
+  const handleRateOnPlayStore = () => {
+    const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.example.clevcalc';
+    window.open(playStoreUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleExitApp = async () => {
+    if (Capacitor.isNativePlatform()) {
+      await CapacitorApp.exitApp();
+      return;
+    }
+
+    window.close();
+  };
+
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar className={styles.toolbar}>
-          <IonTitle className={styles.title}>SmartCalc Pro - All Calculators</IonTitle>
+          <IonButtons slot="start">
+            <IonButton
+              fill="clear"
+              color="light"
+              className={styles.homeBackButton}
+              onClick={openExitDialog}
+              aria-label="Exit app"
+            >
+              <IonIcon icon={arrowBackOutline} />
+            </IonButton>
+          </IonButtons>
+          <IonTitle className={styles.title}>
+            <div className={styles.brand}>
+              <div className={styles.logoShell}>
+                <img src="/smartcalc_pro_icon.png" alt="SmartCalc PRO" className={styles.logoImage} />
+              </div>
+              <div className={styles.brandText}>
+                <span className={styles.brandMain}>SmartCalc PRO</span>
+                <span className={styles.brandSub}>All Calculators</span>
+              </div>
+            </div>
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className={styles.content}>
@@ -309,6 +376,16 @@ const Home = ({ isDarkMode, onToggleDarkMode }: HomeProps) => {
             })}
           </IonRow>
         </IonGrid>
+
+        <ExitDialog
+          isOpen={showExitDialog}
+          onDismiss={() => setShowExitDialog(false)}
+          onContinue={() => setShowExitDialog(false)}
+          onRate={handleRateOnPlayStore}
+          onExit={() => {
+            void handleExitApp();
+          }}
+        />
       </IonContent>
     </IonPage>
   );

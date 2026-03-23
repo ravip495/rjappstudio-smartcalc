@@ -26,6 +26,41 @@ ion-item {
   --highlight-height: 0;
 }
 
+ion-segment {
+  --background: var(--app-surface);
+  border-radius: 999px;
+}
+
+ion-segment-button {
+  --color: var(--app-text-secondary);
+  --color-checked: var(--ion-color-primary);
+  --indicator-color: transparent;
+  font-weight: 600;
+  min-height: 44px;
+}
+
+ion-segment-button::part(native) {
+  color: var(--app-text-secondary);
+}
+
+ion-segment-button.segment-button-checked::part(native) {
+  color: var(--ion-color-primary);
+}
+
+body.dark ion-segment-button::part(native) {
+  color: var(--app-text-secondary);
+}
+
+body.dark ion-segment-button.segment-button-checked::part(native) {
+  color: #8ab4ff;
+}
+
+ion-item ion-label,
+ion-item ion-select,
+ion-item ion-input {
+  color: var(--app-text-primary);
+}
+
 .primary-action {
   --border-radius: 24px;
   height: 48px;
@@ -49,4 +84,24 @@ ion-item {
   color: var(--app-text-secondary);
   font-size: 13px;
   margin-top: 6px;
+}
+
+.premium-exit-modal {
+  --backdrop-opacity: 0.5;
+  --height: 100%;
+  --max-height: 100%;
+  --width: 100%;
+}
+
+.premium-exit-modal::part(content) {
+  align-items: center;
+  backdrop-filter: blur(4px);
+  background: transparent;
+  box-shadow: none;
+  display: flex;
+  justify-content: center;
+}
+
+body.dark .premium-exit-modal {
+  --backdrop-opacity: 0.62;
 }

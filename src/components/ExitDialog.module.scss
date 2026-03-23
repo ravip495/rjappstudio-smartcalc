@@ -1,0 +1,172 @@
+.shell {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  padding: 24px;
+}
+
+.card {
+  backdrop-filter: blur(14px);
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--app-surface) 82%, white),
+      color-mix(in srgb, var(--app-surface) 94%, transparent)
+    );
+  border: 1px solid color-mix(in srgb, var(--app-border) 72%, white);
+  border-radius: 26px;
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.28),
+    0 1px 0 color-mix(in srgb, white 42%, transparent) inset;
+  display: flex;
+  flex-direction: column;
+  max-width: 380px;
+  padding: 30px 22px 22px;
+  text-align: center;
+  width: 100%;
+}
+
+.iconBubble {
+  align-items: center;
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      color-mix(in srgb, var(--ion-color-primary) 28%, transparent),
+      color-mix(in srgb, var(--app-surface) 92%, transparent)
+    );
+  border: 1px solid color-mix(in srgb, var(--app-border) 72%, white);
+  border-radius: 999px;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.2),
+    0 1px 0 color-mix(in srgb, white 44%, transparent) inset;
+  display: flex;
+  height: 72px;
+  justify-content: center;
+  margin: 0 auto 16px;
+  width: 72px;
+}
+
+.icon {
+  color: var(--ion-color-primary);
+  font-size: 30px;
+}
+
+.title {
+  color: var(--app-text-primary);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--app-text-secondary);
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 10px 0 0;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.primaryButton,
+.secondaryButton,
+.tertiaryButton {
+  margin: 0;
+}
+
+.primaryButton::part(native) {
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--ion-color-primary) 90%, white),
+    color-mix(in srgb, var(--ion-color-primary) 80%, var(--app-dark-blue))
+  );
+  border: 0;
+  border-radius: 18px;
+  box-shadow:
+    0 10px 18px rgba(var(--ion-color-primary-rgb), 0.32),
+    0 0 0 1px rgba(255, 255, 255, 0.16) inset;
+  color: var(--ion-color-primary-contrast);
+  font-size: 15px;
+  font-weight: 700;
+  height: 48px;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  transition:
+    transform 0.16s ease,
+    filter 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.primaryButton::part(native):active {
+  box-shadow:
+    0 6px 14px rgba(var(--ion-color-primary-rgb), 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset;
+  filter: brightness(0.98);
+  transform: scale(0.985);
+}
+
+.secondaryButton::part(native) {
+  background: color-mix(in srgb, var(--app-surface) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--app-border) 84%, white);
+  border-radius: 18px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
+  color: var(--app-text-primary);
+  font-size: 15px;
+  font-weight: 600;
+  height: 46px;
+  text-transform: none;
+  transition:
+    transform 0.16s ease,
+    filter 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.secondaryButton::part(native):active {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  filter: brightness(0.985);
+  transform: scale(0.988);
+}
+
+.tertiaryButton::part(native) {
+  background: transparent;
+  border: 0;
+  border-radius: 14px;
+  color: color-mix(in srgb, var(--app-text-secondary) 88%, white);
+  font-size: 14px;
+  font-weight: 500;
+  height: 38px;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  transition:
+    transform 0.16s ease,
+    color 0.16s ease;
+}
+
+.tertiaryButton::part(native):active {
+  color: var(--app-text-primary);
+  transform: scale(0.985);
+}
+
+:global(body.dark) .card {
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--app-surface) 90%, rgba(255, 255, 255, 0.08)),
+      color-mix(in srgb, var(--app-surface) 98%, transparent)
+    );
+  border-color: color-mix(in srgb, var(--app-border) 88%, rgba(255, 255, 255, 0.14));
+  box-shadow:
+    0 22px 42px rgba(0, 0, 0, 0.46),
+    0 1px 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+:global(body.dark) .iconBubble {
+  border-color: color-mix(in srgb, var(--app-border) 92%, rgba(255, 255, 255, 0.16));
+}

@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useCallback, useEffect } from 'react';
 import {
   IonButton,
   IonButtons,
@@ -11,6 +11,8 @@ import {
 } from '@ionic/react';
 import { arrowBackOutline } from 'ionicons/icons';
 import { useNavigate } from 'react-router-dom';
+import { Capacitor } from '@capacitor/core';
+import { App as CapacitorApp } from '@capacitor/app';
 
 import styles from './CalculatorLayout.module.scss';
 
@@ -20,6 +22,29 @@ type CalculatorLayoutProps = PropsWithChildren<{
 
 const CalculatorLayout = ({ title, children }: CalculatorLayoutProps) => {
   const navigate = useNavigate();
+  const goHome = useCallback(() => {
+    navigate('/', { replace: true });
+  }, [navigate]);
+
+  useEffect(() => {
+    if (!Capacitor.isNativePlatform()) {
+      return;
+    }
+
+    let removeListener: (() => Promise<void>) | undefined;
+
+    void CapacitorApp.addListener('backButton', () => {
+      goHome();
+    }).then((listener) => {
+      removeListener = () => listener.remove();
+    });
+
+    return () => {
+      if (removeListener) {
+        void removeListener();
+      }
+    };
+  }, [goHome]);
 
   return (
     <IonPage>
@@ -30,7 +55,7 @@ const CalculatorLayout = ({ title, children }: CalculatorLayoutProps) => {
               fill="clear"
               color="light"
               onClick={() => {
-                navigate(-1);
+                goHome();
               }}
               aria-label="Go back"
             >

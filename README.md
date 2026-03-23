@@ -1,4 +1,4 @@
-# SmartCalc Pro - All Calculators (ClevCalc Clone)
+# SmartCalc PRO - All Calculators
 
 Ionic React + TypeScript calculator suite with 18 calculators, Capacitor Android support, dark mode, favorites, scientific history storage, and clipboard copy support.
 
@@ -80,7 +80,7 @@ npx cap open android
 ## Capacitor App Identity
 
 - **appId:** `com.example.clevcalc`
-- **appName:** `ClevCalc Clone`
+- **appName:** `SmartCalc PRO`
 - **webDir:** `dist`
 
 ## Notes
