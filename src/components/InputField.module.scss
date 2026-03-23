@@ -1,0 +1,21 @@
+.item {
+  --background: var(--app-surface);
+  --border-radius: 8px;
+  --inner-padding-start: 12px;
+  --inner-padding-end: 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--app-border);
+  border-radius: 8px;
+}
+
+.label {
+  color: var(--app-text-secondary);
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+
+.input {
+  color: var(--app-text-primary);
+  font-size: 16px;
+}

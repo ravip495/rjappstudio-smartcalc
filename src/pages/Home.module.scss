@@ -1,0 +1,102 @@
+.toolbar {
+  --background: var(--ion-color-primary);
+  --color: #ffffff;
+}
+
+.title {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.content {
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 12px;
+  --padding-bottom: 20px;
+  --background: var(--app-background);
+}
+
+.searchbar {
+  --background: var(--app-surface);
+  --border-radius: 999px;
+  --box-shadow: none;
+  --color: var(--app-text-primary);
+  --placeholder-color: var(--app-text-secondary);
+  --icon-color: var(--app-text-secondary);
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.settingsCard {
+  background: var(--app-surface);
+  border: 1px solid var(--app-border);
+  border-radius: 12px;
+  margin: 0 0 10px;
+}
+
+.settingsItem {
+  --background: transparent;
+  --inner-padding-end: 12px;
+  --inner-padding-start: 12px;
+}
+
+.settingsHeading {
+  color: var(--app-text-primary);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.settingsCaption {
+  color: var(--app-text-secondary);
+  font-size: 13px;
+  margin: 2px 0 0;
+}
+
+.grid {
+  padding: 0;
+}
+
+.tileCard {
+  border: 1px solid var(--app-border);
+  border-radius: 12px;
+  margin: 0 0 12px;
+  min-height: 188px;
+  background: var(--app-surface);
+}
+
+.tileContent {
+  position: relative;
+  padding: 16px;
+  height: 100%;
+}
+
+.favoriteBtn {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  margin: 0;
+  z-index: 1;
+}
+
+.tileIcon {
+  color: var(--ion-color-primary);
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.tileName {
+  color: var(--app-text-primary);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 6px;
+}
+
+.tileDescription {
+  color: var(--app-text-secondary);
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0;
+}

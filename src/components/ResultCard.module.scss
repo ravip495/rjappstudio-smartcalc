@@ -1,0 +1,82 @@
+.card {
+  background: var(--app-light-blue);
+  border: 1px solid var(--app-border);
+  border-radius: 12px;
+  margin-top: 16px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.headerRow {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.title {
+  color: var(--app-text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.copyButton {
+  margin: 0;
+  text-transform: none;
+}
+
+.resultRow {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.label {
+  color: var(--app-text-secondary);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.value {
+  color: var(--ion-color-primary);
+  font-size: 28px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.monospace {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.success {
+  color: var(--app-success);
+}
+
+.warning {
+  color: var(--app-warning);
+}
+
+.danger {
+  color: var(--app-error);
+}
+
+.primary {
+  color: var(--ion-color-primary);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
