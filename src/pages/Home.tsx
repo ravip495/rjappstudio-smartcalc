@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   IonButton,
-  IonButtons,
   IonCard,
   IonCardContent,
   IonCol,
@@ -19,7 +18,6 @@ import {
   IonToolbar
 } from '@ionic/react';
 import {
-  arrowBackOutline,
   basketOutline,
   calendarOutline,
   calculatorOutline,
@@ -41,7 +39,7 @@ import {
   walletOutline,
   cardOutline
 } from 'ionicons/icons';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Preferences } from '@capacitor/preferences';
 import { Capacitor } from '@capacitor/core';
 import { App as CapacitorApp } from '@capacitor/app';
@@ -195,6 +193,7 @@ const tiles: CalculatorTile[] = [
 
 const Home = ({ isDarkMode, onToggleDarkMode }: HomeProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [search, setSearch] = useState('');
   const [favorites, setFavorites] = useState<string[]>([]);
   const [showExitDialog, setShowExitDialog] = useState(false);
@@ -248,10 +247,6 @@ const Home = ({ isDarkMode, onToggleDarkMode }: HomeProps) => {
     []
   );
 
-  const openExitDialog = () => {
-    setShowExitDialog(true);
-  };
-
   useEffect(() => {
     if (!Capacitor.isNativePlatform()) {
       return;
@@ -259,10 +254,12 @@ const Home = ({ isDarkMode, onToggleDarkMode }: HomeProps) => {
 
     let removeListener: (() => Promise<void>) | undefined;
 
-    void CapacitorApp.addListener('backButton', ({ canGoBack }) => {
-      if (!canGoBack) {
-        openExitDialog();
+    void CapacitorApp.addListener('backButton', () => {
+      if (location.pathname !== '/') {
+        return;
       }
+
+      setShowExitDialog((current) => !current);
     }).then((listener) => {
       removeListener = () => listener.remove();
     });
@@ -272,7 +269,7 @@ const Home = ({ isDarkMode, onToggleDarkMode }: HomeProps) => {
         void removeListener();
       }
     };
-  }, []);
+  }, [location.pathname]);
 
   const handleRateOnPlayStore = () => {
     const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.example.clevcalc';
@@ -292,17 +289,6 @@ const Home = ({ isDarkMode, onToggleDarkMode }: HomeProps) => {
     <IonPage>
       <IonHeader>
         <IonToolbar className={styles.toolbar}>
-          <IonButtons slot="start">
-            <IonButton
-              fill="clear"
-              color="light"
-              className={styles.homeBackButton}
-              onClick={openExitDialog}
-              aria-label="Exit app"
-            >
-              <IonIcon icon={arrowBackOutline} />
-            </IonButton>
-          </IonButtons>
           <IonTitle className={styles.title}>
             <div className={styles.brand}>
               <div className={styles.logoShell}>

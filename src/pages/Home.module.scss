@@ -60,10 +60,6 @@
   text-transform: uppercase;
 }
 
-.homeBackButton {
-  margin-left: 4px;
-}
-
 .content {
   --padding-start: 12px;
   --padding-end: 12px;
@@ -78,9 +74,17 @@
   --box-shadow: none;
   --color: var(--app-text-primary);
   --placeholder-color: var(--app-text-secondary);
+  --placeholder-opacity: 1;
   --icon-color: var(--app-text-secondary);
+  --clear-button-color: var(--app-text-secondary);
   padding: 0;
   margin-bottom: 10px;
+}
+
+:global(body.dark) .searchbar {
+  --placeholder-color: color-mix(in srgb, var(--app-text-secondary) 70%, white);
+  --icon-color: color-mix(in srgb, var(--app-text-secondary) 68%, white);
+  --clear-button-color: color-mix(in srgb, var(--app-text-secondary) 68%, white);
 }
 
 .settingsCard {

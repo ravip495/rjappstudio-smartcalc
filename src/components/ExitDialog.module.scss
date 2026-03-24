@@ -135,22 +135,26 @@
 }
 
 .tertiaryButton::part(native) {
-  background: transparent;
-  border: 0;
+  background: color-mix(in srgb, var(--app-error) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--app-error) 42%, var(--app-border));
   border-radius: 14px;
-  color: color-mix(in srgb, var(--app-text-secondary) 88%, white);
+  color: color-mix(in srgb, var(--app-error) 78%, var(--app-text-primary));
   font-size: 14px;
-  font-weight: 500;
-  height: 38px;
+  font-weight: 600;
+  height: 42px;
   letter-spacing: 0.01em;
   text-transform: none;
   transition:
     transform 0.16s ease,
-    color 0.16s ease;
+    color 0.16s ease,
+    box-shadow 0.16s ease,
+    background 0.16s ease;
 }
 
 .tertiaryButton::part(native):active {
-  color: var(--app-text-primary);
+  background: color-mix(in srgb, var(--app-error) 20%, transparent);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  color: color-mix(in srgb, var(--app-error) 88%, var(--app-text-primary));
   transform: scale(0.985);
 }
 
