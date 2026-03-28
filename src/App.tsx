@@ -11,7 +11,6 @@ import Percentage from './pages/Percentage';
 import Discount from './pages/Discount';
 import Loan from './pages/Loan';
 import DateCalc from './pages/DateCalc';
-import Health from './pages/Health';
 import FuelCost from './pages/FuelCost';
 import FuelEfficiency from './pages/FuelEfficiency';
 import GPA from './pages/GPA';
@@ -19,7 +18,6 @@ import Tip from './pages/Tip';
 import Tax from './pages/Tax';
 import UnitPrice from './pages/UnitPrice';
 import WorldTime from './pages/WorldTime';
-import Ovulation from './pages/Ovulation';
 import Hex from './pages/Hex';
 import Savings from './pages/Savings';
 
@@ -64,7 +62,6 @@ const App = () => {
             <Route path="/discount" element={<Discount />} />
             <Route path="/loan" element={<Loan />} />
             <Route path="/date" element={<DateCalc />} />
-            <Route path="/health" element={<Health />} />
             <Route path="/fuel-cost" element={<FuelCost />} />
             <Route path="/fuel-efficiency" element={<FuelEfficiency />} />
             <Route path="/gpa" element={<GPA />} />
@@ -72,7 +69,6 @@ const App = () => {
             <Route path="/tax" element={<Tax />} />
             <Route path="/unit-price" element={<UnitPrice />} />
             <Route path="/world-time" element={<WorldTime />} />
-            <Route path="/ovulation" element={<Ovulation />} />
             <Route path="/hex" element={<Hex />} />
             <Route path="/savings" element={<Savings />} />
             <Route path="*" element={<Navigate to="/" replace />} />

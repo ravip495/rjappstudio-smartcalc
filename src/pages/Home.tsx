@@ -24,9 +24,7 @@ import {
   carSportOutline,
   cashOutline,
   codeSlashOutline,
-  fitnessOutline,
   globeOutline,
-  heartCircleOutline,
   pricetagOutline,
   receiptOutline,
   restaurantOutline,
@@ -113,13 +111,6 @@ const tiles: CalculatorTile[] = [
     icon: calendarOutline
   },
   {
-    id: 'health',
-    route: '/health',
-    name: 'Health (BMI/BMR)',
-    description: 'Body Mass Index and BMR calculator',
-    icon: fitnessOutline
-  },
-  {
     id: 'fuel-cost',
     route: '/fuel-cost',
     name: 'Fuel Cost',
@@ -167,13 +158,6 @@ const tiles: CalculatorTile[] = [
     name: 'World Time',
     description: 'City timezone conversion with day shift',
     icon: globeOutline
-  },
-  {
-    id: 'ovulation',
-    route: '/ovulation',
-    name: 'Ovulation',
-    description: 'Fertility window and next period date',
-    icon: heartCircleOutline
   },
   {
     id: 'hex',
