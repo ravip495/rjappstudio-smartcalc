@@ -256,7 +256,7 @@ const Home = ({ isDarkMode, onToggleDarkMode }: HomeProps) => {
   }, [location.pathname]);
 
   const handleRateOnPlayStore = () => {
-    const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.example.clevcalc';
+    const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.rjappstudio.smartcalcpro';
     window.open(playStoreUrl, '_blank', 'noopener,noreferrer');
   };
 

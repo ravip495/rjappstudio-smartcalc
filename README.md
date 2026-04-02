@@ -79,7 +79,7 @@ npx cap open android
 
 ## Capacitor App Identity
 
-- **appId:** `com.example.clevcalc`
+- **appId:** `com.rjappstudio.smartcalcpro`
 - **appName:** `SmartCalc PRO`
 - **webDir:** `dist`
 
