@@ -14,6 +14,7 @@
   align-items: center;
   display: inline-flex;
   gap: 10px;
+  padding-left: 8px;
 }
 
 .logoShell {
@@ -82,6 +83,7 @@
 }
 
 :global(body.dark) .searchbar {
+  --color: #ffffff;
   --placeholder-color: color-mix(in srgb, var(--app-text-secondary) 70%, white);
   --icon-color: color-mix(in srgb, var(--app-text-secondary) 68%, white);
   --clear-button-color: color-mix(in srgb, var(--app-text-secondary) 68%, white);
